@@ -4,7 +4,7 @@ Custom Keras layers used on the pastiche model.
 
 import tensorflow as tf
 import keras
-from keras import initializations
+from keras import initializers
 from keras.layers import ZeroPadding2D, Layer, InputSpec
 
 # Extending the ZeroPadding2D layer to do reflection padding instead.
@@ -20,8 +20,8 @@ class ReflectionPadding2D(ZeroPadding2D):
 class InstanceNormalization(Layer):
     def __init__(self, epsilon=1e-5, weights=None,
                  beta_init='zero', gamma_init='one', **kwargs):
-        self.beta_init = initializations.get(beta_init)
-        self.gamma_init = initializations.get(gamma_init)
+        self.beta_init = initializers.get(beta_init)
+        self.gamma_init = initializers.get(gamma_init)
         self.epsilon = epsilon
         super(InstanceNormalization, self).__init__(**kwargs)
 
